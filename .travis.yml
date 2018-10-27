@@ -8,7 +8,7 @@ script:
   - GOOS=darwin go build -o "bubbles-darwin"
 before_deploy:
   - git config --local user.name "rbrick"
-  - git conifg --local user.email "rbrickproductions123@gmail.com"
+  - git config --local user.email "rbrickproductions123@gmail.com"
   - git tag "$(date +'%m-%d-%Y')-$(git log --format=%h -1)"  
 deploy:
   provider: releases
@@ -19,3 +19,6 @@ deploy:
   skip_cleanup: true 
   api_key:
     secure: E4Iidsd7aXPNCGtjUPPW8ssG2QlzIJHJ7FLLyYQj+gfrxxLcbil0+HABJIfvMoEtyT3aROwzPuBbLPSy1MgrfwekXZBBYBrCiH61Y4yTPnAhVQjH1U/M/igHZ0R9JpTTUZTwDWeWFlFk7uVx8C+UhGhMGpBEjnx3YBs030TiRf4xKJg49pAsy+uUwDPknfV7r6Zc1tjz+DZQp9oUHRf/YculOURfypD1uXpDddXT4OYmNJFxRglQr7WvoOdWLDI16TQjpSh6WswF1uiOMh+OG7o5iedas1mH1fdRx/zNHJHJQj+/7aqTRsSV74WBPzNV3cn6sRcbc5SW1tTbgY5/NswJKY/FR7k4VhFsCO2Re0gHfXqFHgDncyVufUsbmqejXMvhHkhA+8tKRo7FaJ9EZfWl22PPUmTI0+MaDC4VGc1vTudZPOgg4aw87SZrSz90eoIE+ufgvXagH/S2mHch1JnbiWh8y72RvZUvVOQZsqQ74eHD0H2T1wecld+haXklzH6WHOutR4gmtyir/cXC2YDchNORwg5nb4DtrBEB/qIFdJOUDaGqLShrDkXrHjtFtPVHr8aGpRIR627m1Sjs1WoLnhyF3YrRnmaZXnWpzvT76W9tHzLiQu5E09rBY389Zaao2PmGbAgqmQaiUZ+47mqpLpt46MjLztSJ/zFPT5M=
+notifications:
+  email: false    
+    
