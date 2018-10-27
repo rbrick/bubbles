@@ -11,7 +11,15 @@ import (
 
 //mapperFunc translates a alphanumeric character into an enclosed "bubble" character and outputs it into stdout or a file.
 var mapperFunc = func(r rune) rune {
-	if unicode.IsLetter(r) {
+	// special case for 0. For some reason, it is at the very end
+	// of the circled latin small letter unicode block.
+	// We can't subtract from 'a' because 0 comes before 'a', it would produce a negative number
+	// We can't Abs value it, the code will be 25 codes off,
+	// subtracting '0' from 'J' (capital J) works to produce it's code (0x24EA/9450)
+	// but it will be more efficient to just special case this.
+	if r == '0' {
+		return rune(0x24EA)
+	} else if unicode.IsLetter(r) {
 		if unicode.IsLower(r) {
 			return (r - 'a') + 0x24D0
 		} else {
