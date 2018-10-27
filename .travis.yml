@@ -1,5 +1,19 @@
 language: go
 go:
-  - "1.10"
   - "1.11"
 go_import_path: github.com/rbrick/bubbles
+script:
+  - go build -o "bubbles-linux"
+  - GOOS=windows go build -o "bubbles-windows.exe"
+  - GOOS=darwin go build -o "bubbles-darwin"
+deploy:
+  provider: releases
+  file:
+    - "bubbles-linux"
+    - "bubbles-windows.exe"
+    - "bubbles-darwin"
+  skip_cleanup: true
+  on:
+    tags: true  
+  api_key:
+    secure: E4Iidsd7aXPNCGtjUPPW8ssG2QlzIJHJ7FLLyYQj+gfrxxLcbil0+HABJIfvMoEtyT3aROwzPuBbLPSy1MgrfwekXZBBYBrCiH61Y4yTPnAhVQjH1U/M/igHZ0R9JpTTUZTwDWeWFlFk7uVx8C+UhGhMGpBEjnx3YBs030TiRf4xKJg49pAsy+uUwDPknfV7r6Zc1tjz+DZQp9oUHRf/YculOURfypD1uXpDddXT4OYmNJFxRglQr7WvoOdWLDI16TQjpSh6WswF1uiOMh+OG7o5iedas1mH1fdRx/zNHJHJQj+/7aqTRsSV74WBPzNV3cn6sRcbc5SW1tTbgY5/NswJKY/FR7k4VhFsCO2Re0gHfXqFHgDncyVufUsbmqejXMvhHkhA+8tKRo7FaJ9EZfWl22PPUmTI0+MaDC4VGc1vTudZPOgg4aw87SZrSz90eoIE+ufgvXagH/S2mHch1JnbiWh8y72RvZUvVOQZsqQ74eHD0H2T1wecld+haXklzH6WHOutR4gmtyir/cXC2YDchNORwg5nb4DtrBEB/qIFdJOUDaGqLShrDkXrHjtFtPVHr8aGpRIR627m1Sjs1WoLnhyF3YrRnmaZXnWpzvT76W9tHzLiQu5E09rBY389Zaao2PmGbAgqmQaiUZ+47mqpLpt46MjLztSJ/zFPT5M=
