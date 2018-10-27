@@ -1,4 +1,4 @@
-# bubbles
+# bubbles [![Build Status](https://travis-ci.org/rbrick/bubbles.svg?branch=master)](https://travis-ci.org/rbrick/bubbles)
 Ⓑⓤⓑⓑⓛⓔⓕⓨ ⓨⓞⓤⓡ ⓣⓔⓧⓣ
 
 # Install
