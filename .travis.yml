@@ -6,6 +6,10 @@ script:
   - go build -o "bubbles-linux"
   - GOOS=windows go build -o "bubbles-windows.exe"
   - GOOS=darwin go build -o "bubbles-darwin"
+before_deploy:
+  - git config --local user.name "rbrick"
+  - git conifg --local user.email "rbrickproductions123@gmail.com"
+  - git tag "$(date +'%m-%d-%Y')-$(git log --format=%h -1)"  
 deploy:
   provider: releases
   file:
